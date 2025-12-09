@@ -1,19 +1,60 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Users, ArrowRight, Sparkles } from "lucide-react";
+import { MapPin, Calendar, Users, ArrowRight, Sparkles, Navigation, Route } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
+import carSilhouette from "@/assets/car-silhouette.png";
+import ParticleField from "./ParticleField";
+import AnimatedRoad from "./AnimatedRoad";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,hsl(174_72%_20%/0.3)_0%,transparent_60%)]" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-      
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(222_30%_18%/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(222_30%_18%/0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+      {/* Hero Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/80" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto w-full">
+      {/* Particle Field */}
+      <ParticleField />
+
+      {/* Animated Road Lines */}
+      <AnimatedRoad />
+      
+      {/* Floating Orbs */}
+      <motion.div
+        animate={{ 
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ 
+          y: [0, 30, 0],
+          scale: [1, 0.9, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ 
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 right-1/3 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl"
+      />
+
+      <div className="relative max-w-7xl mx-auto w-full z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -26,91 +67,191 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm mb-6"
             >
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
               <span className="text-sm font-medium text-primary">Smart Mobility Revolution</span>
             </motion.div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+            >
               Share Your{" "}
-              <span className="gradient-text">Journey</span>
+              <span className="gradient-text relative">
+                Journey
+                <motion.span
+                  className="absolute -inset-1 bg-primary/20 blur-2xl rounded-full"
+                  animate={{ opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+              </span>
               <br />
-              Save the Planet
-            </h1>
+              <span className="text-foreground/90">Save the Planet</span>
+            </motion.h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
+            >
               Connect with fellow travelers heading your way. Split costs, reduce emissions, and make every ride count.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="xl" className="group">
-                Find a Ride
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Button variant="hero" size="xl" className="group relative overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2">
+                  Find a Ride
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-primary"
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  style={{ opacity: 0.3 }}
+                />
               </Button>
-              <Button variant="glass" size="xl">
+              <Button variant="glass" size="xl" className="group">
+                <Route className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 Offer a Ride
               </Button>
-            </div>
+            </motion.div>
 
-            {/* Stats */}
+            {/* Stats with animations */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.8 }}
               className="grid grid-cols-3 gap-6 mt-12"
             >
               {[
-                { value: "2M+", label: "Happy Riders" },
-                { value: "50K+", label: "Daily Trips" },
-                { value: "120+", label: "Cities" },
+                { value: "2M+", label: "Happy Riders", icon: Users },
+                { value: "50K+", label: "Daily Trips", icon: Navigation },
+                { value: "120+", label: "Cities", icon: MapPin },
               ].map((stat, index) => (
-                <div key={index} className="text-center lg:text-left">
-                  <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
+                <motion.div 
+                  key={index} 
+                  className="text-center lg:text-left group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="flex items-center gap-2 justify-center lg:justify-start mb-1">
+                    <stat.icon className="w-4 h-4 text-primary opacity-60" />
+                    <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
+                  </div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right - Search Card */}
+          {/* Right - Search Card with Car Visual */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50, rotateY: -10 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            className="relative"
+            className="relative perspective-1000"
           >
-            <div className="glass-card p-8 relative">
-              {/* Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-transparent to-accent/20 rounded-2xl blur-xl opacity-60" />
+            {/* Car Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="absolute -top-16 -right-8 w-80 z-20 hidden xl:block"
+            >
+              <motion.img
+                src={carSilhouette}
+                alt="Futuristic car"
+                className="w-full h-auto"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+
+            <div className="glass-card p-8 relative group">
+              {/* Animated border glow */}
+              <motion.div 
+                className="absolute -inset-[1px] bg-gradient-to-r from-primary via-accent to-primary rounded-2xl opacity-50 blur-sm"
+                animate={{ 
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                style={{ backgroundSize: "200% 200%" }}
+              />
               
-              <div className="relative space-y-6">
-                <h3 className="font-display text-2xl font-semibold">Find Your Perfect Ride</h3>
+              <div className="relative bg-card rounded-2xl p-8 space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-display text-2xl font-semibold">Find Your Perfect Ride</h3>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="w-8 h-8 rounded-full border-2 border-dashed border-primary/30 flex items-center justify-center"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                  </motion.div>
+                </div>
 
                 {/* From */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">From</label>
-                  <div className="flex items-center gap-3 p-4 rounded-xl bg-secondary/50 border border-border/50 focus-within:border-primary/50 transition-colors">
-                    <MapPin className="w-5 h-5 text-primary" />
+                  <motion.div 
+                    className="flex items-center gap-3 p-4 rounded-xl bg-secondary/50 border border-border/50 focus-within:border-primary/50 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="relative">
+                      <MapPin className="w-5 h-5 text-primary" />
+                      <motion.div
+                        className="absolute inset-0 bg-primary rounded-full"
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                    </div>
                     <input
                       type="text"
                       placeholder="Enter pickup location"
                       className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground"
                     />
-                  </div>
+                  </motion.div>
+                </div>
+
+                {/* Animated connector */}
+                <div className="flex justify-center">
+                  <motion.div
+                    className="w-0.5 h-8 bg-gradient-to-b from-primary via-transparent to-accent"
+                    animate={{ scaleY: [1, 0.5, 1], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
                 </div>
 
                 {/* To */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">To</label>
-                  <div className="flex items-center gap-3 p-4 rounded-xl bg-secondary/50 border border-border/50 focus-within:border-primary/50 transition-colors">
-                    <MapPin className="w-5 h-5 text-accent" />
+                  <motion.div 
+                    className="flex items-center gap-3 p-4 rounded-xl bg-secondary/50 border border-border/50 focus-within:border-accent/50 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="relative">
+                      <MapPin className="w-5 h-5 text-accent" />
+                      <motion.div
+                        className="absolute inset-0 bg-accent rounded-full"
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                      />
+                    </div>
                     <input
                       type="text"
                       placeholder="Enter destination"
                       className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground"
                     />
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Date & Passengers */}
@@ -140,18 +281,20 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <Button variant="accent" size="lg" className="w-full">
-                  Search Rides
-                  <ArrowRight className="w-5 h-5" />
+                <Button variant="accent" size="lg" className="w-full group relative overflow-hidden">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Search Rides
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Button>
               </div>
             </div>
 
             {/* Floating Elements */}
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 glass-card p-4 hidden lg:block"
+              animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-8 -right-4 glass-card p-4 hidden lg:block z-30"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
@@ -165,9 +308,9 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-4 -left-6 glass-card p-4 hidden lg:block"
+              animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+              className="absolute -bottom-6 -left-6 glass-card p-4 hidden lg:block"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
@@ -182,6 +325,29 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center gap-2 text-muted-foreground"
+        >
+          <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
+          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
+            <motion.div
+              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1.5 h-1.5 rounded-full bg-primary"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
