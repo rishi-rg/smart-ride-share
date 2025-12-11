@@ -125,32 +125,6 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            {/* Stats with animations */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="grid grid-cols-3 gap-6 mt-12"
-            >
-              {[
-                { value: "2M+", label: "Happy Riders", icon: Users },
-                { value: "50K+", label: "Daily Trips", icon: Navigation },
-                { value: "120+", label: "Cities", icon: MapPin },
-              ].map((stat, index) => (
-                <motion.div 
-                  key={index} 
-                  className="text-center lg:text-left group"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="flex items-center gap-2 justify-center lg:justify-start mb-1">
-                    <stat.icon className="w-4 h-4 text-primary opacity-60" />
-                    <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* Right - Search Card with Car Visual */}
@@ -160,21 +134,6 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             className="relative perspective-1000"
           >
-            {/* Car Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="absolute -top-16 -right-8 w-80 z-20 hidden xl:block"
-            >
-              <motion.img
-                src={carSilhouette}
-                alt="Futuristic car"
-                className="w-full h-auto"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.div>
 
             <div className="glass-card p-8 relative group">
               {/* Animated border glow */}
@@ -314,11 +273,11 @@ const Hero = () => {
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="text-primary text-lg">💰</span>
+                  <span className="text-primary text-lg">🚗</span>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Save Up To</div>
-                  <div className="text-xs text-primary font-bold">75% on Travel</div>
+                  <div className="text-sm font-semibold">Smart Matching</div>
+                  <div className="text-xs text-primary font-bold">Route Based</div>
                 </div>
               </div>
             </motion.div>

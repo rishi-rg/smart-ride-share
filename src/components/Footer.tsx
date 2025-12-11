@@ -18,8 +18,8 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
                 <Car className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-xl">
-                Ride<span className="gradient-text">Share</span>
+            <span className="font-display font-bold text-xl">
+                Ride<span className="gradient-text">Connect</span>
               </span>
             </a>
             <p className="text-muted-foreground mb-6 max-w-xs">
@@ -61,7 +61,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 RideShare. All rights reserved.
+            © 2024 RideConnect. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Terms</a>
