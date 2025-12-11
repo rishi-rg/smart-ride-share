@@ -4,8 +4,6 @@ import FeaturedRoutes from "@/components/FeaturedRoutes";
 import HowItWorks from "@/components/HowItWorks";
 import CarShowcase from "@/components/CarShowcase";
 import Benefits from "@/components/Benefits";
-import Safety from "@/components/Safety";
-import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -18,8 +16,6 @@ const Index = () => {
       <HowItWorks />
       <CarShowcase />
       <Benefits />
-      <Safety />
-      <Testimonials />
       <CTA />
       <Footer />
     </main>

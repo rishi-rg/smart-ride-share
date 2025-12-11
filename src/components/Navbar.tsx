@@ -9,8 +9,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "How it Works", href: "#how-it-works" },
     { name: "Benefits", href: "#benefits" },
-    { name: "Safety", href: "#safety" },
-    { name: "Reviews", href: "#reviews" },
+    { name: "Routes", href: "#routes" },
   ];
 
   return (
@@ -28,7 +27,7 @@ const Navbar = () => {
               <Car className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="font-display font-bold text-xl text-foreground">
-              Ride<span className="gradient-text">Share</span>
+              Ride<span className="gradient-text">Connect</span>
             </span>
           </a>
 
