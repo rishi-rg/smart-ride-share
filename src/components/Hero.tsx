@@ -63,15 +63,6 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Smart Mobility Revolution</span>
-            </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
@@ -249,64 +240,9 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-8 -right-4 glass-card p-4 hidden lg:block z-30"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <span className="text-green-400 text-lg">🌱</span>
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Eco Friendly</div>
-                  <div className="text-xs text-muted-foreground">-40% CO₂</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              className="absolute -bottom-6 -left-6 glass-card p-4 hidden lg:block"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="text-primary text-lg">🚗</span>
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Smart Matching</div>
-                  <div className="text-xs text-primary font-bold">Route Based</div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-muted-foreground"
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
-          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 rounded-full bg-primary"
-            />
-          </div>
-        </motion.div>
-      </motion.div>
     </section>
   );
 };
