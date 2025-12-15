@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Car } from "lucide-react";
@@ -48,8 +49,8 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost">Sign In</Button>
-            <Button variant="hero">Get Started</Button>
+            <Link to="/signin"><Button variant="ghost">Sign In</Button></Link>
+            <Link to="/register"><Button variant="hero">Get Started</Button></Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,8 +82,8 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                <Button variant="ghost" className="w-full">Sign In</Button>
-                <Button variant="hero" className="w-full">Get Started</Button>
+                <Link to="/signin"><Button variant="ghost" className="w-full">Sign In</Button></Link>
+                <Link to="/register"><Button variant="hero" className="w-full">Get Started</Button></Link>
               </div>
             </div>
           </motion.div>
