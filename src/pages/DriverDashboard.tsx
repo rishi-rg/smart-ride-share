@@ -97,6 +97,12 @@ const DriverDashboard = () => {
           </Link>
           
           <div className="flex items-center gap-4">
+            <Link to="/post-ride">
+              <Button variant="default" size="sm">
+                <Plus className="w-4 h-4 mr-2" />
+                Post a Ride
+              </Button>
+            </Link>
             <div className="flex items-center gap-2 text-muted-foreground">
               <User className="w-5 h-5" />
               <span>{user.name}</span>
