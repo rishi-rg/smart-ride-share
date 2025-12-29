@@ -32,6 +32,7 @@ const App = () => (
           <Route path="/post-ride" element={<PostRide />} />
           <Route path="/my-bookings" element={<MyBookings />} />
           <Route path="/transactions" element={<TransactionHistory />} />
+          <Route path="/history" element={<TransactionHistory />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

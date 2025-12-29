@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { signIn } from "@/lib/auth";
+import { login } from "@/lib/api";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -20,31 +20,34 @@ const SignIn = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const result = signIn(email, password);
-    
-    if (result.success && result.user) {
+    try {
+      const user = await login({ email, password });
+      
+      // Save the entire user object (including token) to localStorage
+      localStorage.setItem('rideconnect_current_user', JSON.stringify(user));
+      
       toast({
         title: "Welcome back!",
-        description: `Signed in as ${result.user.name}`,
+        description: `Signed in as ${user.name || user.email}`,
       });
       
       // Redirect based on role
-      if (result.user.role === 'admin') {
+      if (user.role === 'ADMIN') {
         navigate('/admin');
-      } else if (result.user.role === 'driver') {
+      } else if (user.role === 'DRIVER') {
         navigate('/driver-dashboard');
       } else {
         navigate('/passenger-dashboard');
       }
-    } else {
+    } catch (error: any) {
       toast({
         title: "Sign in failed",
-        description: result.error,
+        description: error.response?.data?.message || "Invalid credentials",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
-    
-    setIsLoading(false);
   };
 
   return (
